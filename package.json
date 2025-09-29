@@ -1,8 +1,7 @@
 {
-  "name": "@siw-education/exercise",
+  "name": "@kodai-yamamoto-siw/exercise",
   "version": "0.1.0",
   "description": "Docusaurus で演習セクションを手軽に表示する React コンポーネント",
-  "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -12,7 +11,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && tsc -p tsconfig.json && node ./scripts/copy-assets.mjs",
+    "build": "npm run clean && tsc -p tsconfig.json",
     "lint": "tsc --noEmit",
     "prepare": "npm run build"
   },
