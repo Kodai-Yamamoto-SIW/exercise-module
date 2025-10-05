@@ -11,7 +11,7 @@ export interface ExercisePluginOptions {
 }
 
 const DEFAULT_OPTIONS: Required<ExercisePluginOptions> = {
-  headingLevel: 3,
+  headingLevel: 2,
 };
 
 export default function exercisePlugin(
@@ -168,7 +168,7 @@ export function validateOptions({
   ExercisePluginOptions
 >): ExercisePluginOptions {
   const schema = Joi.object<ExercisePluginOptions>({
-    headingLevel: Joi.number().integer().min(2).max(6).default(3),
+    headingLevel: Joi.number().integer().min(2).max(6).default(2),
   });
 
   return validate(schema, options);

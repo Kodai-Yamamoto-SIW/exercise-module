@@ -27,7 +27,7 @@ const config: Config = {
     [
       '@kodai-yamamoto-siw/exercise',
       {
-        headingLevel: 3,
+        headingLevel: 2,
       },
     ],
   ],
