@@ -1,2 +1,2 @@
-export { default, Solution } from './Exercise.js';
-export type { ExerciseProps, SolutionProps } from './Exercise.js';
+export {default, validateOptions} from './plugin.js';
+export type {ExercisePluginOptions} from './plugin.js';

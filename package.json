@@ -1,7 +1,7 @@
 {
   "name": "@kodai-yamamoto-siw/exercise",
   "version": "0.1.0",
-  "description": "Docusaurus で演習セクションを手軽に表示する React コンポーネント",
+  "description": "Docusaurus 向けの演習セクション用プラグイン",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,20 +16,40 @@
     "prepare": "npm run build"
   },
   "peerDependencies": {
+    "@docusaurus/core": "^3.0.0",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0"
   },
+  "dependencies": {
+    "github-slugger": "^2.0.0",
+    "@docusaurus/utils-validation": "^3.9.1",
+    "unist-util-visit": "^5.0.0"
+  },
   "devDependencies": {
+    "@docusaurus/types": "^3.9.1",
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^24.6.1",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
+    "@types/unist": "^3.0.3",
+    "mdast-util-mdx": "^3.0.0",
     "rimraf": "^6.0.1",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3",
+    "unified": "^11.0.5"
   },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "import": "./dist/client.js",
+      "default": "./dist/client.js"
+    },
+    "./theme": {
+      "default": "./dist/theme/index.js"
     }
   }
 }

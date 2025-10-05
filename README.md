@@ -1,25 +1,53 @@
 # @kodai-yamamoto-siw/exercise
 
-Docusaurus で演習課題と解答の折りたたみ表示を手早く組み込むための React コンポーネントです。高校生向け教材に合わせて、専門用語を避けたデザインとスタイルを採用しています。
+Docusaurus で演習課題と解答の折りたたみ表示を提供するプラグインです。演習タイトルは自動的に目次（Table of Contents）へ登録され、教材執筆時の手間を減らします。
 
-## インストール方法
+## インストール
 
 ```bash
 npm install @kodai-yamamoto-siw/exercise
 ```
 
-ローカルで相対パスを使う場合は次のように指定できます。
+ローカルのモノレポ構成では、相対パスで次のように追加できます。
 
 ```bash
 npm install ../packages/exercise-module
 ```
 
-## 使い方
+## 設定
 
-MDX ファイルでコンポーネントをインポートし、問題文と解答を子要素として渡します。
+`docusaurus.config.ts` にプラグインを追加します。`headingLevel` を変更すると演習タイトルの見出し階層（既定は h3）を調整できます。
+
+```ts
+import type {Config} from '@docusaurus/types';
+
+const config: Config = {
+  // ...既存設定...
+  plugins: [
+    [
+      '@kodai-yamamoto-siw/exercise',
+      {
+        headingLevel: 3,
+      },
+    ],
+  ],
+};
+
+export default config;
+```
+
+各 MDX ファイルでは、演習コンポーネントをクライアント用エントリから読み込みます。
 
 ```mdx
-import Exercise, { Solution } from '@kodai-yamamoto-siw/exercise';
+import Exercise, { Solution } from '@kodai-yamamoto-siw/exercise/client';
+```
+
+## 使い方
+
+演習はタイトルと本文、必要に応じて `Solution` ブロックを子要素として記述します。タイトルは自動で目次に追加されます。
+
+```mdx
+import Exercise, { Solution } from '@kodai-yamamoto-siw/exercise/client';
 
 <Exercise title="ボックスの色を変えましょう">
 課題の説明をここに書きます。
@@ -30,7 +58,7 @@ import Exercise, { Solution } from '@kodai-yamamoto-siw/exercise';
 </Exercise>
 ```
 
-`Solution` を省略すると解答ブロックは表示されません。`solutionTitle` を指定すれば見出しを変更できます。
+解答を省略すると折りたたみ欄は表示されず、`solutionTitle` でボタンの文言を調整できます。
 
 ```mdx
 <Exercise title="ステップの確認" solutionTitle="ヒントを見る">
@@ -40,4 +68,4 @@ import Exercise, { Solution } from '@kodai-yamamoto-siw/exercise';
 
 ## スタイル
 
-コンポーネントが初回表示時に必要なスタイルを自動で `<style>` タグとして追加します。Docusaurus を含む通常のブラウザー環境であれば追加設定は不要です。
+必要なスタイルはクライアント側で自動挿入されます。Docusaurus のダークモード／ライトモード切り替えにも対応しています。
