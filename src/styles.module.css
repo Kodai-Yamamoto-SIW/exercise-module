@@ -71,12 +71,16 @@
   margin: 2rem 0;
   box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
   position: relative;
-  overflow: hidden;
+  max-width: 100%;
 }
 
 .exerciseContent {
   display: grid;
   gap: 1.25rem;
+}
+
+.exerciseContent > * {
+  min-width: 0;
 }
 
 [data-theme='dark'] .exerciseSection {
@@ -120,11 +124,19 @@
 .exerciseSection .prism-code {
   border: 1px solid var(--ifm-color-primary-lighter);
   background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 [data-theme='dark'] .exerciseSection .prism-code {
   background: rgba(0, 0, 0, 0.3);
   border-color: var(--ifm-color-primary-darker);
+}
+
+.exerciseSection .prism-code code {
+  white-space: pre;
 }
 
 .exerciseSection ol,

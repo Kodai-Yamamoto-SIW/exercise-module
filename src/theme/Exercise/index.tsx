@@ -20,7 +20,7 @@ const stylesText = `
   margin: 2rem 0;
   box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
   position: relative;
-  overflow: hidden;
+  max-width: 100%;
 }
 
 [data-theme='dark'] .${classes.section} {
@@ -64,11 +64,23 @@ const stylesText = `
 .${classes.section} .prism-code {
   border: 1px solid var(--ifm-color-primary-lighter);
   background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 [data-theme='dark'] .${classes.section} .prism-code {
   background: rgba(0, 0, 0, 0.3);
   border-color: var(--ifm-color-primary-darker);
+}
+
+.${classes.section} .prism-code code {
+  white-space: pre;
+}
+
+.${classes.content} > * {
+  min-width: 0;
 }
 
 .${classes.content} {
